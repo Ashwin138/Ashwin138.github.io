@@ -3,72 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kamaucha - Redirecting...</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-        .container {
-            text-align: center;
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-        }
-        h1 {
-            margin: 0 0 1rem 0;
-            font-size: 2.5rem;
-        }
-        p {
-            font-size: 1.2rem;
-            margin: 0.5rem 0;
-        }
-        .spinner {
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            border-top: 4px solid white;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 2rem auto;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-    </style>
+    <title>Redirecting...</title>
     <script>
-        window.onload = function() {
-            // Get the current path from the URL
-            const path = window.location.pathname;
-            
-            // Remove leading slash
-            const name = path.substring(1);
-            
-            // Build the redirect URL
-            const redirectUrl = `https://kamauchanepali.com/tip/${name}`;
-            
-            document.getElementById('redirectUrl').textContent = redirectUrl;
-            
-            // Redirect immediately
-            window.location.replace(redirectUrl);
-        };
+        // Get the current path from the URL
+        const path = window.location.pathname;
+        
+        // Remove leading slash
+        const name = path.substring(1);
+        
+        // Build the redirect URL and redirect immediately
+        const redirectUrl = `https://kamauchanepali.com/tip/${name}`;
+        window.location.replace(redirectUrl);
     </script>
 </head>
 <body>
-    <div class="container">
-        <h1>Redirecting...</h1>
-        <div class="spinner"></div>
-        <p>You are being redirected to:</p>
-        <p><strong id="redirectUrl"></strong></p>
-    </div>
 </body>
 </html>

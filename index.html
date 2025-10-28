@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kamaucha.me - Link Shortener</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Kamaucha.me - Smart URL Redirector</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -15,21 +15,56 @@
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             min-height: 100vh;
-            background: #0f172a;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
             color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+            top: -250px;
+            right: -250px;
+            animation: float 20s ease-in-out infinite;
+        }
+        
+        body::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+            bottom: -200px;
+            left: -200px;
+            animation: float 15s ease-in-out infinite reverse;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(50px, 50px); }
         }
 
         .container {
-            max-width: 600px;
+            position: relative;
+            z-index: 1;
+            max-width: 680px;
             width: 100%;
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-            border-radius: 24px;
-            padding: 48px 40px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(20px);
+            border-radius: 32px;
+            padding: 56px 48px;
+            box-shadow: 
+                0 25px 80px rgba(0, 0, 0, 0.6),
+                0 0 0 1px rgba(255, 255, 255, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
@@ -39,63 +74,126 @@
         }
 
         .icon {
-            width: 64px;
-            height: 64px;
+            width: 72px;
+            height: 72px;
             background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-            border-radius: 16px;
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 32px;
+            margin: 0 auto 24px;
+            font-size: 36px;
             font-weight: 700;
-            box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4);
+            box-shadow: 
+                0 12px 32px rgba(59, 130, 246, 0.5),
+                0 0 60px rgba(139, 92, 246, 0.3);
+            animation: glow 3s ease-in-out infinite;
+        }
+        
+        @keyframes glow {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 
+                    0 12px 32px rgba(59, 130, 246, 0.5),
+                    0 0 60px rgba(139, 92, 246, 0.3);
+            }
+            50% { 
+                transform: scale(1.05);
+                box-shadow: 
+                    0 15px 40px rgba(59, 130, 246, 0.7),
+                    0 0 80px rgba(139, 92, 246, 0.5);
+            }
         }
 
         h1 {
-            font-size: 32px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #ffffff 0%, #60a5fa 50%, #a78bfa 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            letter-spacing: -0.5px;
         }
 
         .tagline {
-            font-size: 16px;
-            color: #94a3b8;
-            font-weight: 500;
+            font-size: 17px;
+            color: #cbd5e1;
+            font-weight: 400;
+            line-height: 1.6;
+            max-width: 480px;
+            margin: 0 auto;
         }
 
         .card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 24px;
-            margin-bottom: 20px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(139, 92, 246, 0.08) 100%);
+            border: 1.5px solid rgba(96, 165, 250, 0.2);
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.5), transparent);
         }
 
         .label {
-            font-size: 12px;
-            font-weight: 600;
+            font-size: 11px;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: #94a3b8;
-            margin-bottom: 12px;
-            display: block;
+            letter-spacing: 1.5px;
+            color: #60a5fa;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .label::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: #60a5fa;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(96, 165, 250, 0.8);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
         }
 
         .url-display {
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 16px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(96, 165, 250, 0.2);
+            border-radius: 14px;
+            padding: 18px 20px;
             font-family: 'Courier New', monospace;
-            font-size: 15px;
-            color: #60a5fa;
+            font-size: 16px;
+            color: #93c5fd;
             word-break: break-all;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .url-display:hover {
+            background: rgba(0, 0, 0, 0.6);
+            border-color: rgba(96, 165, 250, 0.4);
+            transform: translateX(4px);
+        }
+        
+        .url-display strong {
+            color: #60a5fa;
+            font-weight: 700;
         }
 
         .arrow-container {
@@ -109,32 +207,34 @@
         }
 
         .example-card {
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
-            border: 1px solid rgba(96, 165, 250, 0.2);
-            border-radius: 16px;
-            padding: 24px;
-            margin-top: 24px;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            padding: 28px;
+            margin-top: 28px;
         }
 
         .example-title {
-            font-size: 14px;
-            font-weight: 600;
-            color: #60a5fa;
-            margin-bottom: 16px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #fbbf24;
+            margin-bottom: 18px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .example-url {
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 12px 16px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(251, 191, 36, 0.2);
+            border-radius: 12px;
+            padding: 14px 18px;
             font-family: 'Courier New', monospace;
             font-size: 14px;
-            color: #e2e8f0;
-            margin: 8px 0;
+            color: #fef3c7;
+            margin: 10px 0;
         }
 
         .features {
@@ -145,69 +245,109 @@
         }
 
         .feature {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 16px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            padding: 20px 16px;
             text-align: center;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.1), transparent);
+            transition: left 0.5s ease;
         }
 
         .feature:hover {
-            background: rgba(255, 255, 255, 0.08);
-            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(96, 165, 250, 0.2);
+            transform: translateY(-4px);
+        }
+        
+        .feature:hover::before {
+            left: 100%;
         }
 
         .feature-icon {
-            font-size: 24px;
-            margin-bottom: 8px;
+            font-size: 28px;
+            margin-bottom: 10px;
         }
 
         .feature-text {
-            font-size: 12px;
-            font-weight: 500;
-            color: #cbd5e1;
+            font-size: 13px;
+            font-weight: 600;
+            color: #e2e8f0;
+            letter-spacing: 0.3px;
         }
 
         .footer {
             text-align: center;
-            margin-top: 24px;
-            padding-top: 24px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 32px;
+            padding-top: 28px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
             font-size: 13px;
             color: #64748b;
+        }
+        
+        .footer a {
+            color: #60a5fa;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+        
+        .footer a:hover {
+            color: #93c5fd;
         }
 
         @media (max-width: 640px) {
             .container {
-                padding: 32px 24px;
+                padding: 40px 28px;
             }
 
             h1 {
-                font-size: 28px;
+                font-size: 32px;
             }
 
             .tagline {
-                font-size: 14px;
+                font-size: 15px;
+            }
+            
+            .icon {
+                width: 64px;
+                height: 64px;
+                font-size: 32px;
+            }
+            
+            .card {
+                padding: 24px;
             }
 
             .url-display {
-                font-size: 13px;
-                padding: 12px;
+                font-size: 14px;
+                padding: 14px 16px;
             }
 
             .example-url {
-                font-size: 12px;
-                padding: 10px 12px;
+                font-size: 13px;
+                padding: 12px 14px;
             }
 
             .features {
                 grid-template-columns: 1fr;
-                gap: 10px;
+                gap: 12px;
             }
 
             .feature {
-                padding: 12px;
+                padding: 16px 14px;
             }
         }
     </style>
@@ -217,7 +357,7 @@
         <div class="header">
             <div class="icon">K</div>
             <h1>kamaucha.me</h1>
-            <p class="tagline">Simple Link Redirector</p>
+            <p class="tagline">Transform long URLs into short, memorable links. Seamlessly redirect from kamaucha.me to your destination.</p>
         </div>
 
         <div class="card">
@@ -231,8 +371,8 @@
 
         <div class="example-card">
             <div class="example-title">
-                <span>�</span>
-                <span>Example</span>
+                <span>💡</span>
+                <span>Live Example</span>
             </div>
             <div class="example-url">kamaucha.me/john</div>
             <div class="arrow-container">
@@ -257,7 +397,7 @@
         </div>
 
         <div class="footer">
-            Powered by GitHub Pages
+            Powered by <a href="https://pages.github.com" target="_blank">GitHub Pages</a>
         </div>
     </div>
 </body>

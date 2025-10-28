@@ -129,10 +129,15 @@
             background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(139, 92, 246, 0.08) 100%);
             border: 1.5px solid rgba(96, 165, 250, 0.2);
             border-radius: 20px;
-            padding: 32px;
-            margin-bottom: 24px;
+            padding: 24px 32px;
+            margin-bottom: 20px;
             position: relative;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
         }
         
         .card::before {
@@ -145,50 +150,26 @@
             background: linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.5), transparent);
         }
 
-        .label {
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: #60a5fa;
-            margin-bottom: 18px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .label::before {
-            content: '';
-            width: 6px;
-            height: 6px;
-            background: #60a5fa;
-            border-radius: 50%;
-            box-shadow: 0 0 10px rgba(96, 165, 250, 0.8);
-            animation: pulse 2s ease-in-out infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
-        }
+
 
         .url-display {
             background: rgba(0, 0, 0, 0.4);
             border: 1px solid rgba(96, 165, 250, 0.2);
             border-radius: 14px;
-            padding: 18px 20px;
+            padding: 16px 20px;
             font-family: 'Courier New', monospace;
-            font-size: 16px;
+            font-size: 15px;
             color: #93c5fd;
-            word-break: break-all;
-            margin-bottom: 12px;
+            word-break: break-word;
             transition: all 0.3s ease;
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
         }
         
         .url-display:hover {
             background: rgba(0, 0, 0, 0.6);
             border-color: rgba(96, 165, 250, 0.4);
-            transform: translateX(4px);
         }
         
         .url-display strong {
@@ -197,44 +178,38 @@
         }
 
         .arrow-container {
-            text-align: center;
-            margin: 16px 0;
+            display: flex;
+            align-items: center;
         }
 
         .arrow {
             font-size: 24px;
             color: #60a5fa;
+            flex-shrink: 0;
         }
 
         .example-card {
             background: rgba(0, 0, 0, 0.2);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 18px;
-            padding: 28px;
-            margin-top: 28px;
+            border-radius: 14px;
+            padding: 16px 20px;
+            margin-top: 16px;
+            text-align: center;
         }
 
         .example-title {
-            font-size: 13px;
+            font-size: 11px;
             font-weight: 700;
-            color: #fbbf24;
-            margin-bottom: 18px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            color: #94a3b8;
+            margin-bottom: 10px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
         .example-url {
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(251, 191, 36, 0.2);
-            border-radius: 12px;
-            padding: 14px 18px;
             font-family: 'Courier New', monospace;
-            font-size: 14px;
-            color: #fef3c7;
-            margin: 10px 0;
+            font-size: 13px;
+            color: #cbd5e1;
         }
 
         .features {
@@ -308,9 +283,27 @@
             color: #93c5fd;
         }
 
+        @media (max-width: 768px) {
+            .card {
+                flex-direction: column;
+                gap: 16px;
+                padding: 20px;
+            }
+            
+            .url-display {
+                min-width: 100%;
+                font-size: 14px;
+                padding: 14px 16px;
+            }
+            
+            .arrow {
+                transform: rotate(90deg);
+            }
+        }
+        
         @media (max-width: 640px) {
             .container {
-                padding: 40px 28px;
+                padding: 40px 24px;
             }
 
             h1 {
@@ -326,19 +319,9 @@
                 height: 64px;
                 font-size: 32px;
             }
-            
-            .card {
-                padding: 24px;
-            }
-
-            .url-display {
-                font-size: 14px;
-                padding: 14px 16px;
-            }
 
             .example-url {
-                font-size: 13px;
-                padding: 12px 14px;
+                font-size: 12px;
             }
 
             .features {
@@ -357,28 +340,19 @@
         <div class="header">
             <div class="icon">K</div>
             <h1>kamaucha.me</h1>
-            <p class="tagline">Transform long URLs into short, memorable links. Seamlessly redirect from kamaucha.me to your destination.</p>
+            <p class="tagline">Type the name of streamer here</p>
         </div>
 
         <div class="card">
-            <span class="label">How it works</span>
             <div class="url-display">kamaucha.me/<strong>[name]</strong></div>
             <div class="arrow-container">
-                <div class="arrow">↓</div>
+                <div class="arrow">→</div>
             </div>
             <div class="url-display">kamauchanepali.com/tip/<strong>[name]</strong></div>
         </div>
 
         <div class="example-card">
-            <div class="example-title">
-                <span>💡</span>
-                <span>Live Example</span>
-            </div>
-            <div class="example-url">kamaucha.me/john</div>
-            <div class="arrow-container">
-                <div class="arrow">→</div>
-            </div>
-            <div class="example-url">kamauchanepali.com/tip/john</div>
+            <div class="example-url">kamaucha.me/john → kamauchanepali.com/tip/john</div>
         </div>
 
         <div class="features">

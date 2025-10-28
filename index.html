@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kamaucha.me - Smart URL Redirector</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Welcome to kamaucha.me | Quick Tip Redirector</title>
     <style>
         * {
             margin: 0;
@@ -13,362 +12,318 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             min-height: 100vh;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             padding: 20px;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        body::before {
-            content: '';
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
-            top: -250px;
-            right: -250px;
-            animation: float 20s ease-in-out infinite;
-        }
-        
-        body::after {
-            content: '';
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
-            bottom: -200px;
-            left: -200px;
-            animation: float 15s ease-in-out infinite reverse;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(50px, 50px); }
+            overflow-x: hidden;
         }
 
         .container {
-            position: relative;
-            z-index: 1;
-            max-width: 680px;
+            max-width: 800px;
             width: 100%;
-            background: rgba(30, 41, 59, 0.6);
-            backdrop-filter: blur(20px);
-            border-radius: 32px;
-            padding: 56px 48px;
-            box-shadow: 
-                0 25px 80px rgba(0, 0, 0, 0.6),
-                0 0 0 1px rgba(255, 255, 255, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .header {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 60px 40px;
             text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .icon {
-            width: 72px;
-            height: 72px;
-            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 24px;
-            font-size: 36px;
-            font-weight: 700;
-            box-shadow: 
-                0 12px 32px rgba(59, 130, 246, 0.5),
-                0 0 60px rgba(139, 92, 246, 0.3);
-            animation: glow 3s ease-in-out infinite;
-        }
-        
-        @keyframes glow {
-            0%, 100% { 
-                transform: scale(1);
-                box-shadow: 
-                    0 12px 32px rgba(59, 130, 246, 0.5),
-                    0 0 60px rgba(139, 92, 246, 0.3);
-            }
-            50% { 
-                transform: scale(1.05);
-                box-shadow: 
-                    0 15px 40px rgba(59, 130, 246, 0.7),
-                    0 0 80px rgba(139, 92, 246, 0.5);
-            }
-        }
-
-        h1 {
-            font-size: 42px;
-            font-weight: 800;
-            margin-bottom: 12px;
-            background: linear-gradient(135deg, #ffffff 0%, #60a5fa 50%, #a78bfa 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.5px;
-        }
-
-        .tagline {
-            font-size: 17px;
-            color: #cbd5e1;
-            font-weight: 400;
-            line-height: 1.6;
-            max-width: 480px;
-            margin: 0 auto;
-        }
-
-        .card {
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(139, 92, 246, 0.08) 100%);
-            border: 1.5px solid rgba(96, 165, 250, 0.2);
-            border-radius: 20px;
-            padding: 24px 32px;
-            margin-bottom: 20px;
+            animation: fadeInUp 0.8s ease-out;
             position: relative;
             overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
         }
-        
-        .card::before {
+
+        .container::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.5), transparent);
+            height: 6px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #667eea);
+            background-size: 200% 100%;
+            animation: gradientShift 3s ease infinite;
         }
 
-
-
-        .url-display {
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(96, 165, 250, 0.2);
-            border-radius: 14px;
-            padding: 16px 20px;
-            font-family: 'Courier New', monospace;
-            font-size: 15px;
-            color: #93c5fd;
-            word-break: break-word;
-            transition: all 0.3s ease;
-            flex: 1;
-            min-width: 200px;
-            text-align: center;
-        }
-        
-        .url-display:hover {
-            background: rgba(0, 0, 0, 0.6);
-            border-color: rgba(96, 165, 250, 0.4);
-        }
-        
-        .url-display strong {
-            color: #60a5fa;
-            font-weight: 700;
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .arrow-container {
-            display: flex;
-            align-items: center;
+        @keyframes gradientShift {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
         }
 
-        .arrow {
-            font-size: 24px;
-            color: #60a5fa;
-            flex-shrink: 0;
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
         }
 
-        .example-card {
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 14px;
-            padding: 16px 20px;
-            margin-top: 16px;
-            text-align: center;
+        h1 {
+            font-size: 3rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            font-weight: 800;
+            animation: float 3s ease-in-out infinite;
         }
 
-        .example-title {
-            font-size: 11px;
-            font-weight: 700;
-            color: #94a3b8;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .emoji {
+            font-size: 4rem;
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+            margin-bottom: 20px;
         }
 
-        .example-url {
-            font-family: 'Courier New', monospace;
-            font-size: 13px;
-            color: #cbd5e1;
+        .subtitle {
+            font-size: 1.3rem;
+            color: #555;
+            margin-bottom: 40px;
+            line-height: 1.6;
         }
 
-        .features {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            margin-top: 24px;
+        .feature-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 16px;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .feature {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 14px;
-            padding: 20px 16px;
-            text-align: center;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .feature::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.1), transparent);
-            transition: left 0.5s ease;
+        .feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
         }
 
-        .feature:hover {
-            background: rgba(255, 255, 255, 0.06);
-            border-color: rgba(96, 165, 250, 0.2);
-            transform: translateY(-4px);
-        }
-        
-        .feature:hover::before {
-            left: 100%;
-        }
-
-        .feature-icon {
-            font-size: 28px;
-            margin-bottom: 10px;
-        }
-
-        .feature-text {
-            font-size: 13px;
+        .feature-box h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
             font-weight: 600;
-            color: #e2e8f0;
-            letter-spacing: 0.3px;
+        }
+
+        .feature-box p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+
+        .url-example {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+            margin: 30px 0;
+            font-family: 'Courier New', monospace;
+            transition: transform 0.3s ease;
+        }
+
+        .url-example:hover {
+            transform: scale(1.02);
+        }
+
+        .url-example .from {
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .url-example .arrow {
+            color: #764ba2;
+            font-size: 1.5rem;
+            margin: 10px 0;
+        }
+
+        .url-example .to {
+            color: #764ba2;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
         }
 
         .footer {
-            text-align: center;
-            margin-top: 32px;
-            padding-top: 28px;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
-            font-size: 13px;
-            color: #64748b;
+            margin-top: 40px;
+            color: #888;
+            font-size: 0.9rem;
         }
-        
-        .footer a {
-            color: #60a5fa;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.2s ease;
+
+        .sparkle {
+            display: inline-block;
+            animation: sparkle 2s ease-in-out infinite;
         }
-        
-        .footer a:hover {
-            color: #93c5fd;
+
+        @keyframes sparkle {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.5;
+                transform: scale(1.2);
+            }
         }
 
         @media (max-width: 768px) {
-            .card {
-                flex-direction: column;
-                gap: 16px;
-                padding: 20px;
+            h1 {
+                font-size: 2rem;
             }
-            
-            .url-display {
-                min-width: 100%;
-                font-size: 14px;
-                padding: 14px 16px;
+
+            .emoji {
+                font-size: 3rem;
             }
-            
-            .arrow {
-                transform: rotate(90deg);
+
+            .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .container {
+                padding: 40px 25px;
+            }
+
+            .feature-box h2 {
+                font-size: 1.5rem;
+            }
+
+            .feature-box p {
+                font-size: 1rem;
             }
         }
-        
-        @media (max-width: 640px) {
-            .container {
-                padding: 40px 24px;
-            }
 
-            h1 {
-                font-size: 32px;
-            }
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
 
-            .tagline {
-                font-size: 15px;
-            }
-            
-            .icon {
-                width: 64px;
-                height: 64px;
-                font-size: 32px;
-            }
+        .particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: rise 10s infinite ease-in;
+        }
 
-            .example-url {
-                font-size: 12px;
+        @keyframes rise {
+            0% {
+                bottom: -10%;
+                opacity: 0;
             }
-
-            .features {
-                grid-template-columns: 1fr;
-                gap: 12px;
+            50% {
+                opacity: 1;
             }
-
-            .feature {
-                padding: 16px 14px;
+            100% {
+                bottom: 110%;
+                opacity: 0;
             }
         }
     </style>
 </head>
 <body>
+    <div class="particles" id="particles"></div>
+    
     <div class="container">
-        <div class="header">
-            <div class="icon">K</div>
-            <h1>kamaucha.me</h1>
-            <p class="tagline">Type the name of streamer here</p>
+        <div class="emoji">🌟</div>
+        <h1>Welcome to kamaucha.me</h1>
+        <p class="subtitle">
+            Your lightning-fast URL shortener for seamless tipping! 
+            <span class="sparkle">✨</span>
+        </p>
+
+        <div class="feature-box">
+            <h2>🚀 How It Works</h2>
+            <p>
+                Simply add any name after <strong>kamaucha.me/</strong> and get instantly 
+                redirected to <strong>kamauchanepali.com/tip/[name]</strong>
+            </p>
         </div>
 
-        <div class="card">
-            <div class="url-display">kamaucha.me/<strong>[name]</strong></div>
-            <div class="arrow-container">
-                <div class="arrow">→</div>
-            </div>
-            <div class="url-display">kamauchanepali.com/tip/<strong>[name]</strong></div>
+        <div class="url-example">
+            <div class="from">kamaucha.me/john</div>
+            <div class="arrow">↓</div>
+            <div class="to">kamauchanepali.com/tip/john</div>
         </div>
 
-        <div class="example-card">
-            <div class="example-url">kamaucha.me/john → kamauchanepali.com/tip/john</div>
+        <div class="feature-box">
+            <h2>💡 Why Use This?</h2>
+            <p>
+                Save time with shorter, memorable URLs. Perfect for streamers, content creators, 
+                and anyone who wants to make tipping easier for their community!
+            </p>
         </div>
 
-        <div class="features">
-            <div class="feature">
-                <div class="feature-icon">⚡</div>
-                <div class="feature-text">Instant</div>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🔒</div>
-                <div class="feature-text">Secure</div>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🌐</div>
-                <div class="feature-text">Global</div>
-            </div>
+        <a href="https://kamauchanepali.com" class="cta-button" target="_blank">
+            Learn More About kamauchanepali.com
+        </a>
+
+        <div class="footer">
+            <p>Powered by GitHub Pages • Made with 💜</p>
         </div>
     </div>
+
+    <script>
+        // Check if there's a path (not just root)
+        const path = window.location.pathname;
+        const name = path.substring(1);
+        
+        // If there's a name in the path, redirect
+        if (name && name.trim() !== '') {
+            const redirectUrl = `https://kamauchanepali.com/tip/${name}`;
+            window.location.replace(redirectUrl);
+        }
+
+        // Create floating particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 20; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 10 + 's';
+            particle.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            particlesContainer.appendChild(particle);
+        }
+    </script>
 </body>
 </html>
